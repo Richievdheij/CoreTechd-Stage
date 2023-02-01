@@ -20,6 +20,7 @@ CoreTechd Dashboard portal bevat codes in (HTML, CSS, PHP & JavaScript)
 - Ticket systeem "https://coretechd.freshdesk.com/support/home"
 - Storing systeem "https://zakelijk.coretechd.nl/storingen/"
 
+![image](https://user-images.githubusercontent.com/91939456/216156692-b0416b9e-a35f-44e7-a692-4de19c0a7990.png)
 ![image](https://user-images.githubusercontent.com/91939456/216155249-4cfe0503-123b-414e-9bbe-c02fa3f71da6.png)
 ![image](https://user-images.githubusercontent.com/91939456/216155418-20362b8f-a366-4e28-ad32-f1e94c148322.png)
 ![image](https://user-images.githubusercontent.com/91939456/216155596-102a6d3e-f226-475a-b67d-bb33a220c6eb.png)
