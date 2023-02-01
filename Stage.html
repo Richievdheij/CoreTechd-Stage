@@ -1,0 +1,1380 @@
+<html lang="nl"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Inloggen ‹ CoreTechd — WordPress</title>
+	<script src="https://portal.coretechd.nl/wp-includes/js/zxcvbn.min.js" type="text/javascript" async=""></script><script>if("sessionStorage" in window){try{for(var key in sessionStorage){if(key.indexOf("wp-autosave-")!=-1){sessionStorage.removeItem(key)}}}catch(e){}};</script>
+	<meta name="robots" content="max-image-preview:large, noindex, noarchive">
+    <script src="https://portal.coretechd.nl/wp-includes/js/jquery/jquery.min.js?ver=3.6.1" id="jquery-core-js"></script>
+    <script src="https://portal.coretechd.nl/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2" id="jquery-migrate-js"></script>
+    <link rel="stylesheet" id="formidable-css" href="https://portal.coretechd.nl/wp-content/plugins/formidable/css/formidableforms.css?ver=1231401" media="all">
+    <link rel="stylesheet" id="dashicons-css" href="https://portal.coretechd.nl/wp-includes/css/dashicons.min.css?ver=6.1.1" media="all">
+    <link rel="stylesheet" id="buttons-css" href="https://portal.coretechd.nl/wp-includes/css/buttons.min.css?ver=6.1.1" media="all">
+    <link rel="stylesheet" id="forms-css" href="https://portal.coretechd.nl/wp-admin/css/forms.min.css?ver=6.1.1" media="all">
+    <link rel="stylesheet" id="l10n-css" href="https://portal.coretechd.nl/wp-admin/css/l10n.min.css?ver=6.1.1" media="all">
+    <link rel="stylesheet" id="login-css" href="https://portal.coretechd.nl/wp-admin/css/login.min.css?ver=6.1.1" media="all">
+    <style media="screen" id="loginpress-style-wp-5-3">
+      .login form .input, .login input[type=text],.login form input[type=checkbox]{
+        border-radius: 0;
+      }
+      input[type=checkbox]:checked:before {
+    	  content: url('data:image/svg+xml;utf8,<svg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27><path%20d%3D%27M14.83%204.89l1.34.94-5.81%208.38H9.02L5.78%209.67l1.34-1.25%202.57%202.4z%27%20fill%3D%27%231e8cbe%27%2F><%2Fsvg>');
+    	  margin: -0.25rem 0 0 -0.275rem !important;
+      }
+      body .language-switcher{
+        margin-top: 10px;
+        clear: both;
+        z-index: 1;
+        position: absolute;
+        top: 100%;
+      }
+      body #login{
+        position: relative;
+      }
+      .wp-core-ui #login .button-primary{
+          margin-left: 0;
+      }
+      .admin-email__actions-primary .button:first-child {
+          font: 400 15px "Roboto", sans-serif;
+          color: #fff;
+          height: auto;
+          line-height: 20px !important;
+          padding: 13px;
+          padding-top: 13px;
+          padding-bottom: 13px;
+          width: 100%;
+          text-align: center;
+          background-color: #008ec2;
+          border: 0;
+          margin-bottom: 8px;
+          border-radius: 5px;
+      }
+      .admin-email__actions-primary .button:first-child:hover {
+          background-color: #008ec2;
+      }
+      .login form.admin-email-confirm-form {
+          max-width: 360px;
+          margin: 0 auto;
+      }
+      .login-action-confirm_admin_email #backtoblog a {
+          color: #008ec2 !important;
+      }
+    </style>
+    <style media="screen" id="loginpress-style">
+
+    /*************************************************************
+     * Plugin:      LoginPress - Customizing the WordPress Login.*
+     * Description: LoginPress is the best Login Page Customizer *
+     *              in WordPress which allows you to completely  *
+     *              change the layout of login, register and     *
+     *              forgot password forms.                       *
+     * Author:      WPBrigade                                    *
+     * visit:       https://wordpress.org/plugins/loginpress/    *
+     *************************************************************/
+    body.login {
+      background-image: url(https://portal.coretechd.nl/wp-content/plugins/loginpress/img/bg.jpg);
+      /*background-color: #ddd5c3;*/
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+        display: table;
+    	min-height: 100vh;
+    	width: 100%;
+    	padding: 0;
+    }
+    .header-wrapper{
+    	/* display: table-row; */
+    }
+    #login{
+    	margin-top: 2%;
+    	background: #fff;
+    	position: relative;
+    	-webkit-border-radius: 5px;
+    	-moz-border-radius: 5px;
+    	-ms-border-radius: 5px;
+    	-o-border-radius: 5px;
+    	border-radius: 5px;
+    	-webkit-box-shadow: 0 0 15px rgba(0,0,0,.8);
+    	box-shadow: 0 0 15px rgba(0,0,0,.8);
+        max-width: 350px;
+    	padding: 26px 26px 6px 26px;
+    	width: 100%;
+    }
+    .login form {
+    	margin-top: 20px;
+    	margin-left: 0;
+    	padding: 0 24px 12px;
+    	background: #fff;
+    	-webkit-box-shadow: none;
+    	box-shadow: none;
+    }
+    .login form .input, .login input[type="text"]{
+    	height: 48px;
+    	background: #fff;
+    	-webkit-border-radius: 5px;
+    	-moz-border-radius: 5px;
+    	-ms-border-radius: 5px;
+    	border-radius: 5px;
+    	margin-bottom: 18px;
+    	font: normal 15px "Roboto", sans-serif;
+    	color: #7f7f7f;
+    	border-color: #bdbdbd;
+    	padding-left: 27px;
+    	font-weight: normal;
+    }
+    #jetpack_protect_answer{
+      padding-left: 0;
+      text-align : center;
+    }
+    .login input[type="submit"] {
+    	background: #fff;
+    	color: #fff;
+    	margin: 7px 0 7px;
+    	height: 46px;
+    	-webkit-border-radius: 5px;
+    	-moz-border-radius: 5px;
+    	-ms-border-radius: 5px;
+    	border-radius: 5px;
+    	font: normal 15px "Roboto", sans-serif;
+    	color: #fff;
+    	width: 100%;
+	}
+	.wp-core-ui.login .button-group.button-large .button,
+	.wp-core-ui.login .button.button-large, .wp-core-ui.login .button-primary{
+    	height: 46px;
+    	line-height: 0;
+    	background: #008ec2;
+	}
+	.wp-core-ui.login  .two-factor-email-resend .button{
+		color: #444;
+	}
+    .login #nav {
+    	text-align: center;
+    }
+    #login_error { display:block; }
+    /*.message { display:none; }*/
+    /*.custom-message {
+    	-moz-border-radius:3px 3px 3px 3px;
+    	border-style:solid;
+    	border-width:1px;
+    	margin:0 0 16px 8px;
+    	padding:12px;
+    }*/
+
+    #backtoblog{
+    	text-align: center;
+    }
+    .header-cell{
+    	/* display: table-cell; */
+    	height: 100px;
+    }
+    .loginHeaderMenu{
+    	text-align: center;
+    	position: relative;
+    	z-index: 10;
+    	list-style: none;
+    	background: #333;
+
+    }
+    .loginHeaderMenu>ul>li{
+    	display: inline-block;
+    	vertical-align: top;
+    	position: relative;
+    	list-style: none;
+    }
+    .loginHeaderMenu>ul>li>a{
+    	color: #fff;
+    	text-transform: uppercase;
+    	text-decoration: none;
+    	font-size: 16px;
+    	padding: 17px 20px;
+    	display: inline-block;
+    }
+    .loginHeaderMenu>ul>li:hover>a{
+    	background: #4CAF50;
+    	color: #fff;
+    }
+    .loginHeaderMenu>ul>li>ul{
+    	position: absolute;
+    	width: 200px;
+    	padding: 0;
+    	top: 100%;
+    	left: 0;
+    	background: #fff;
+    	list-style: none;
+    	text-align: left;
+    	border-radius: 0 0 5px 5px;
+    	-webkit-box-shadow: 0px 5px 10px -1px rgba(0,0,0,0.31);
+    	-moz-box-shadow: 0px 5px 10px -1px rgba(0,0,0,0.31);
+    	box-shadow: 0px 5px 10px -1px rgba(0,0,0,0.31);
+    	overflow: hidden;
+    	opacity: 0;
+    	visibility: hidden;
+    }
+    .loginHeaderMenu>ul>li:hover>ul{
+    	opacity: 1;
+    	visibility: visible;
+    }
+    .loginHeaderMenu>ul>li>ul>li{
+    	font-size: 15px;
+    	color: #333;
+    }
+    .loginHeaderMenu>ul>li>ul>li>a{
+    	color: #333;
+    	padding: 10px;
+    	display: block;
+    	text-decoration: none;
+    }
+    .loginHeaderMenu>ul>li>ul>li>a:hover {
+    	background: rgba(51, 51, 51, 0.35);
+    	color: #fff;
+    }
+    .login-wrapper{
+    	display: table-row;
+    }
+    .login-cell{
+    	display: table-cell;
+    	vertical-align: middle;
+    }
+    .clear{
+    	display: none;
+    }
+    .footer-wrapper{
+    /* display: table-footer-group; */
+      position: -webkit-sticky;
+      position: sticky;
+      top: 100vh;
+    }
+    .footer-cont{
+    	right: 0;
+    	bottom: 0;
+    	left: 0;
+    	text-align: center;
+    	/* display: table-cell; */
+    	vertical-align: bottom;
+    	/* height: 100px; */
+    }
+    .loginFooterMenu{
+    	text-align: center;
+    	background-color: rgba(0,0,0,.7);
+    }
+    .loginFooterMenu>ul{
+    	display: inline-flex;
+    }
+
+    .loginFooterMenu>ul>li{
+    	display: inline-block;
+    	padding: 18px;
+	}
+	/* style two factor plugin */
+	.login .backup-methods-wrap a, #login form p:not([class]){
+		color: #555d66;
+	}
+	.login .backup-methods-wrap a:hover{
+		color: #00a0d2;
+	}
+	/*End style two factor plugin */
+    .loginFooterMenu>ul>li:focus{
+    	outline: none;
+    	border: 0;
+    }
+    .loginFooterMenu>ul>li>a:focus{
+    	outline: none;
+    	border: 0;
+    }
+    .loginFooterMenu>ul>li>a{
+    	color: #fff;
+    	text-transform: uppercase;
+    	text-decoration: none;
+    	font-size: 14px;
+    }
+    .loginHead {
+    	width:100%;
+    	text-align: center;
+    	margin-top: 0;
+    	margin-bottom: 20px;
+    	padding: 13px 0 0;
+    	position: relative;
+    	margin: 0;
+    }
+    .loginHead p a {
+  	    text-decoration: none;
+    }
+    .loginFooter {
+    	display: table-footer-group;
+    }
+    .loginFooter p a {
+    	display: inline-block;
+    	margin: 0 5px;
+    }
+    .loginInner {
+    	margin: 0 auto;
+    	text-align: center;
+    	margin-top: 20px;
+    	margin-bottom: 0;
+    	padding: 13px 0;
+    	position: relative;
+    }
+    .copyRight{
+    	text-align: center;
+    	padding: 12px;
+    	background-color: #efefef;
+    }
+    .loginpress-show-love{
+      color: #222;
+    }
+    .loginpress-show-love a{
+      color: #263466;
+    }
+    .loginpress-show-love a:hover{
+      color: #4d5d95;
+	}
+    @media screen and (max-width: 767px) {
+        #login{
+            width: 300px;
+        }
+        .login form{
+            padding-right: 0;
+            padding-left: 0;
+        }
+        .login .loginpress-show-love{
+            position: static;
+            text-align: center;
+            float: none;
+            background: rgba(255,255,255, .5);
+            margin-top: 11px;
+            padding-bottom: 0;
+            padding: 3px;
+        }
+    }
+
+    </style>
+
+  <style type="text/css">
+*{
+	box-sizing: border-box;
+}
+.footer-cont{ 
+	height: 0 !important;
+}
+
+.login form input[type=checkbox]:focus{
+	box-shadow: none;
+    outline: none;
+}
+.login form .forgetmenot{
+	float: none;
+}
+.login form .forgetmenot label{
+	display:inline-block;
+	margin: 0;
+}
+#login::after{
+	    }
+
+#login{
+	border-radius: 30px;
+	box-shadow: 0 0 10px rgba( 0,0,0,0.1 );;
+	}
+html[dir="rtl"] .login form .input, html[dir="rtl"] .login input[type="text"]{
+	margin-right: 0;
+}
+body.login #loginpress_video-background-wrapper{
+				}
+body.login #loginpress_video-background{
+	object-fit: cover;
+	}
+body.login:after{
+	  
+  }
+body.login {
+	background-image: url(https://portal.coretechd.nl/wp-content/uploads/2022/12/Coretechd-achtergrond.png);
+	background-color: #ededed;
+	background-position: center bottom;
+	background-size: cover;
+	position: relative;
+}
+.login h1{
+	}
+.interim-login.login h1 a{
+    width: 181px;
+  }
+
+.login h1 a {
+	background-image: url( https://portal.coretechd.nl/wp-content/uploads/2022/12/core_icon.png )  !important;
+	width: 181px !important;
+	height: 100px !important;
+	background-size: contain  !important;
+	margin-bottom: 20px !important;
+	
+}
+
+.wp-core-ui #login  .button-primary{
+    background: #8b3c94;
+    border-color: #8b3c94;
+}
+
+.wp-core-ui #login  .button-primary:hover{
+    background: #272347;
+    border-color: #272347;
+}
+.wp-core-ui #login .button-primary, .wp-core-ui #login .two-factor-email-resend .button, .wp-core-ui #login .wp-generate-pw{
+	box-shadow: 0 0 0px rgba( 0,0,0,0.8 );  /* box-shadow: none; */
+	height: auto;
+	line-height: 20px;
+	padding: 13px;
+	padding-top: 13px;;
+	padding-bottom: 13px;;
+	float: none;
+	width: 100%;
+}
+.wp-core-ui #login .wp-generate-pw{
+	margin-bottom: 6px;
+    margin-top: 10px;
+	font: inherit;
+	border-radius: 20px;;
+}
+#loginform {
+	min-height: 300px;
+	padding: 0px 0px 0px;
+}
+
+#loginform input[type="text"], #loginform input[type="password"]{
+    box-shadow: 0 0 0px rgba( 0,0,0,0.8 );
+}
+
+#registerform input[type="text"], #registerform input[type="password"], #registerform input[type="number"], #registerform input[type="email"] {
+    box-shadow: 0 0 0px rgba( 0,0,0,0.8 );
+}
+
+#lostpasswordform input[type="text"]{
+    box-shadow: 0 0 0px rgba( 0,0,0,0.8 );
+}
+
+#login {
+    max-width: 620px !important;
+}
+
+.login form .forgetmenot label {
+	}
+
+.login label {
+	font-size: 15px;		
+}
+
+.login form .input, .login input[type="text"] {
+	width: 100%;
+	margin: 4px 6px 20px 0px;
+	background: #efeeed;
+	color: #515151;
+}
+
+#lostpasswordform {
+	padding: 0px 0px 0px;
+}
+
+#registerform {
+  	padding: 0px 0px 0px;
+}
+
+#wfls-prompt-overlay {
+	}
+
+.login .custom-message {
+    border-left: 4px solid #00a0d2;
+    background-color: #fff;
+    padding: 12px;
+    margin-left: 0;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+
+.login #nav {
+		}
+
+.login #nav a, .login #nav{
+	text-decoration: none;
+	font-size: 14px;;
+}
+
+.login form .forgetmenot label{
+	font-size: 15px;;
+	}
+
+.login input[type="submit"]{
+	width: 100%;;
+	border-radius: 20px;;
+}
+
+.login #nav a:hover{
+	}
+
+.login #backtoblog{
+	}
+
+.login .copyRight{
+	}
+/* .loginpress-show-love, .loginpress-show-love a{
+		color: ;
+	} */
+
+.login .copyRight{
+	}
+.login #backtoblog a{
+			}
+.login #backtoblog{
+		display: none;
+	
+}
+.login #backtoblog a:hover{
+	}
+
+.loginHead {
+	}
+
+.loginHead p a {
+		}
+
+.loginHead p a:hover {
+	}
+
+.loginFooter p a {
+	margin: 0 5px;
+		}
+
+.loginFooter p a:hover {
+		}
+
+.loginInner {
+	}
+
+body #login {
+    margin-top: 10% !important;
+}
+
+@media screen and (max-width: 782px){
+input[type=checkbox], input[type=radio] {
+    height: 16px;
+    width: 16px;
+}
+
+input[type=checkbox]:checked:before {
+    width: 22px;
+    height: 16px;
+    margin: -0.1875rem -0.3125rem;
+}
+}
+
+.language-switcher {
+    display: none;
+}
+.login form .input, .login input[type="text"] {
+    padding-left: 15px;
+}
+
+.login input[type="submit"] {
+    margin-top: 15px;
+}
+.login .button.wp-hide-pw {
+   width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 6px;
+}
+.login .button.wp-hide-pw:focus {
+    border: none;
+    box-shadow: 0 0 0px;
+}
+
+.login #nav {
+    margin: 10px 0px 5px;
+}
+
+.wp-core-ui #login .button-primary {
+    transition: 0.3s;
+}
+
+body.login {
+     backdrop-filter: blur(3px);
+     overflow: hidden;
+     background-color: #0e0a31;
+}
+.wp-core-ui .button-primary{
+text-shadow: none;
+}
+
+/*input:-webkit-autofill{
+  transition: all 100000s ease-in-out 0s !important;
+  transition-property: background-color, color !important;
+}*/
+.copyRight{
+	padding: 12px 170px;
+}
+.loginpress-show-love{
+  float: right;
+  font-style: italic;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  position: absolute;
+  bottom: 3px;
+  right: 0;
+  z-index: 10;
+}
+.loginpress-show-love a{
+  text-decoration: none;
+}
+.love-position{
+	left: 0;
+	padding-left: 20px;
+}
+.header-cell{
+	/* display: table-cell; */
+	height: 100px;
+}
+.loginHeaderMenu{
+	text-align: center;
+	position: relative;
+	z-index: 10;
+	list-style: none;
+	background: #333;
+
+}
+.loginHeaderMenu>ul>li{
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	list-style: none;
+}
+.loginHeaderMenu>ul>li>a{
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 17px 20px;
+	display: inline-block;
+}
+.loginHeaderMenu>ul>li:hover>a{
+	background: #4CAF50;
+	color: #fff;
+}
+.loginHeaderMenu>ul>li>ul{
+	position: absolute;
+	width: 200px;
+	padding: 0;
+	top: 100%;
+	left: 0;
+	background: #fff;
+	list-style: none;
+	text-align: left;
+	border-radius: 0 0 5px 5px;
+	-webkit-box-shadow: 0px 5px 10px -1px rgba(0,0,0,0.31);
+	-moz-box-shadow: 0px 5px 10px -1px rgba(0,0,0,0.31);
+	box-shadow: 0px 5px 10px -1px rgba(0,0,0,0.31);
+	overflow: hidden;
+	opacity: 0;
+	visibility: hidden;
+}
+.loginHeaderMenu>ul>li:hover>ul{
+	opacity: 1;
+	visibility: visible;
+}
+.loginHeaderMenu>ul>li>ul>li{
+	font-size: 15px;
+	color: #333;
+}
+.loginHeaderMenu>ul>li>ul>li>a{
+	color: #333;
+	padding: 10px;
+	display: block;
+	text-decoration: none;
+}
+.loginHeaderMenu>ul>li>ul>li>a:hover {
+	background: rgba(51, 51, 51, 0.35);
+	color: #fff;
+}
+.loginHeaderMenu>ul {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+.loginFooterMenu{
+	text-align: center;
+	background-color: rgba(0,0,0,.7);
+}
+.loginFooterMenu>ul{
+	display: inline-flex;
+}
+
+.loginFooterMenu>ul>li{
+	display: inline-block;
+	padding: 18px;
+}
+.loginFooterMenu>ul>li:focus{
+	outline: none;
+	border: 0;
+}
+.loginFooterMenu>ul>li>a:focus{
+	outline: none;
+	border: 0;
+}
+.loginFooterMenu>ul>li>a{
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 14px;
+}
+.loginFooterMenu>ul {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+.loginpress-caps-lock{
+	background: rgba(51, 56, 61, 0.9);
+    color: #fff;
+    display: none;
+    font-size: 14px;
+    width: 120px;
+	padding: 5px 10px;
+	line-height: 20px;
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 5px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    -webkit-box-shadow: 0 0 9px 0px rgba(0, 0, 0, 0.20);
+    box-shadow: 0 0 9px 0px rgba(0, 0, 0, 0.20);
+    margin-left: 5px;
+    font-weight: normal;
+	margin: 0;
+	display: none;
+}
+.loginpress-caps-lock:before{
+	content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 5px 5px 0;
+    border-color: transparent rgba(51, 56, 61, 0.9) transparent transparent;
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-left: 0;
+    margin-top: -5px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+}
+.login form{
+    overflow: visible;
+	border: none;
+}
+#loginform .user-pass-fields input{
+    margin-bottom: 0;
+}
+#loginform .user-pass-fields {
+	margin-bottom: 18px;
+	position: relative;
+}
+#login form p.submit{
+	position: relative;
+    clear: both;
+}
+input[type=checkbox]:checked::before{
+	margin: -.35rem 0 0 -.375rem;
+}
+ /* LoginPress input field since 1.1.20 */
+ /* .loginpress-input-wrap{
+	 position: relative;
+ }
+.loginpres-input-field {
+	transition: 0.4s;
+}
+.loginpres-input-field ~ .focus-border:before, .loginpres-input-field ~ .focus-border:after{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 0;
+	height: 2px;
+	background-color: #3399FF;
+	transition: 0.4s;
+	z-index: 999;
+}
+.loginpres-input-field ~ .focus-border:after{
+	top: auto; bottom: 0;
+}
+.loginpres-input-field ~ .focus-border i:before, .loginpres-input-field ~ .focus-border i:after{
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 2px;
+	height: 0;
+	background-color: #3399FF;
+	transition: 0.6s;
+}
+.loginpres-input-field ~ .focus-border i:after{
+	left: auto; right: 0;
+}
+.loginpres-input-field:focus ~ .focus-border:before, .loginpres-input-field:focus ~ .focus-border:after{
+	left: 0;
+	width: 100%;
+	transition: 0.4s;
+}
+.loginpres-input-field:focus ~ .focus-border i:before, .loginpres-input-field:focus ~ .focus-border i:after{
+	top: 0;
+	height: 100%;
+	transition: 0.6s;
+} */
+/* ! LoginPress input field since 1.1.20 */
+@media screen and (max-width: 1239px) and (min-width: 768px){
+	body.login #loginpress_video-background-wrapper{
+			}
+}
+@media screen and (max-width: 767px) {
+		.login h1 a {
+			max-width: 100%;
+			background-size: contain !important;
+		}
+    .copyRight{
+    	padding: 12px;
+	}
+	.loginpress-caps-lock{
+		left: auto;
+		right: 0;
+		top: 149%;
+	}
+	.loginpress-caps-lock:before{
+		content: '';
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 0 5px 5px 5px;
+		border-color: transparent transparent rgba(51, 56, 61, 0.9) transparent;
+		position: absolute;
+		top: 0px;
+		left: 5px;
+		right: auto;
+	}
+	.loginpress-show-love{
+		display: none !important;
+	}
+body.login #loginpress_video-background-wrapper{
+				}
+}
+@media screen and (max-height: 700px) {
+	.loginpress-show-love{
+		display: none !important;
+	}
+}
+/* The only rule that matters */
+#loginpress_video-background {
+/*  making the video fullscreen  */
+  position: fixed !important ;
+  right: 0 !important ;
+  bottom: 0 !important ;
+  width: 100% !important ;
+  height: 100% !important ;
+  z-index: -100 !important ;
+}
+body.login #login.login_tranparent,body.login  #login.login_tranparent #loginform{
+	background: none !important;
+}
+body.login{
+	display: flex;
+	flex-direction: column;
+}
+body #login{
+	margin-bottom: 0;
+}
+body.login label[for="authcode"]:after{
+	display: none;
+}
+body.login label[for="authcode"]+input{
+	padding-left: 15px;
+}
+[for="language-switcher-locales"]:after{
+	display: none;
+}
+.language-switcher{
+	clear: both;
+	padding-top: 1px;
+}
+.login #language-switcher input[type="submit"]{
+	margin: 0;
+	color: #2271b1;
+	border-color: #2271b1;
+	background: #f6f7f7;
+	vertical-align: top;
+	height: inherit;
+	width: inherit;
+	font-size: inherit;
+}
+</style>
+
+
+<script type="text/javascript">
+		// Resize reCAPTCHA to fit width of container
+		// Since it has a fixed width, we're scaling
+		// using CSS3 transforms
+		// ------------------------------------------
+		// captchaScale = containerWidth / elementWidth
+
+		function scaleCaptcha(elementWidth) {
+		  // Width of the reCAPTCHA element, in pixels
+		  if(document.querySelector('.loginpress_recaptcha_wrapper')){
+			var reCaptchaWidth = 304;
+			// Get the containing element's width
+				var containerWidth = document.querySelector('.loginpress_recaptcha_wrapper').clientWidth;
+			// Only scale the reCAPTCHA if it won't fit
+			// inside the container
+			if(reCaptchaWidth > containerWidth) {
+				// Calculate the scale
+				var captchaScale = containerWidth / reCaptchaWidth;
+				// Apply the transformation
+				document.querySelector('.g-recaptcha').style.transform =  'scale(' + captchaScale + ')';
+				// console.log(captchaScale);
+			}
+		}
+		}
+
+		// $(function() {
+
+		//   // Initialize scaling
+		//   scaleCaptcha();
+
+		//   // Update scaling on window resize
+		//   // Uses jQuery throttle plugin to limit strain on the browser
+
+
+		// });
+		document.addEventListener("DOMContentLoaded", function(event) {
+			scaleCaptcha();
+		});
+		window.onresize = function(event) {
+			scaleCaptcha()
+		};
+		window.onload = function(){
+			scaleCaptcha()
+		};
+</script>
+	<meta name="referrer" content="strict-origin-when-cross-origin">
+		<meta name="viewport" content="width=device-width">
+	<link rel="icon" href="https://portal.coretechd.nl/wp-content/uploads/2022/12/cropped-CoreTechd-Favicon-32x32.png" sizes="32x32">
+<link rel="icon" href="https://portal.coretechd.nl/wp-content/uploads/2022/12/cropped-CoreTechd-Favicon-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://portal.coretechd.nl/wp-content/uploads/2022/12/cropped-CoreTechd-Favicon-180x180.png">
+<meta name="msapplication-TileImage" content="https://portal.coretechd.nl/wp-content/uploads/2022/12/cropped-CoreTechd-Favicon-270x270.png">
+	<style type="text/css">@font-face { font-family: Roboto; src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf"); }</style></head>
+	<body class="login js login-action-login wp-core-ui  locale-nl-nl">
+	<script type="text/javascript">
+		document.body.className = document.body.className.replace('no-js','js');
+	</script>
+		<div id="login">
+		<h1><a href="https://portal.coretechd.nl">https://portal.coretechd.nl</a></h1>
+	<p class="message" id="login-message">	Je bent nu uitgelogd.<br>
+</p>
+
+		<form name="loginform" id="loginform" action="https://portal.coretechd.nl/login/" method="post">
+			<p>
+				<label for="user_login">Gebruikersnaam of e-mailadres</label>
+				<input type="text" name="log" id="user_login" aria-describedby="login-message" class="input" value="" size="20" autocapitalize="off" autocomplete="username">
+			</p>
+
+			<div class="user-pass-wrap">
+				<label for="user_pass">Wachtwoord</label>
+				<div class="wp-pwd">
+					<div class="user-pass-fields"><input type="password" name="pwd" id="user_pass" aria-describedby="login-message" class="input password-input" value="" size="20" autocomplete="current-password"><div class="loginpress-caps-lock" style="display: none;">Caps Lock staat aan</div></div>
+					<button type="button" class="button button-secondary wp-hide-pw hide-if-no-js" data-toggle="0" aria-label="Wachtwoord tonen">
+						<span class="dashicons dashicons-visibility" aria-hidden="true"></span>
+					</button>
+				</div>
+			</div>
+						<p class="forgetmenot"><input name="rememberme" type="checkbox" id="rememberme" value="forever"> <label for="rememberme">Onthoud mij</label></p>
+			<p class="submit">
+				<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="Inloggen">
+									<input type="hidden" name="redirect_to" value="https://portal.coretechd.nl/wp-admin/">
+									<input type="hidden" name="testcookie" value="1">
+			</p>
+		</form>
+
+					<p id="nav">
+				<a href="https://portal.coretechd.nl/login/?action=lostpassword">Je wachtwoord vergeten?</a>			</p>
+					<script type="text/javascript">
+			function wp_attempt_focus() {setTimeout( function() {try {d = document.getElementById( "user_login" );d.focus(); d.select();} catch( er ) {}}, 200);}
+wp_attempt_focus();
+if ( typeof wpOnload === 'function' ) { wpOnload() }		</script>
+				<p id="backtoblog">
+			<a href="https://portal.coretechd.nl/">← Ga naar CoreTechd</a>		</p>
+			</div>
+		<div class="footer-wrapper"><div class="footer-cont"></div></div>
+<script>
+
+document.addEventListener( 'DOMContentLoaded', function() {
+    if (navigator.userAgent.indexOf("Firefox") != -1) {
+      var body = document.body;
+      body.classList.add("firefox");
+    }
+    // your code goes here
+    if ( document.getElementById('user_pass') ) {
+      var loginpress_user_pass = document.getElementById('user_pass');
+      var loginpress_wrapper   = document.createElement('div');
+      loginpress_wrapper.classList.add('user-pass-fields');
+      // insert wrapper before el in the DOM tree
+      user_pass.parentNode.insertBefore(loginpress_wrapper, loginpress_user_pass);
+
+      // move el into wrapper
+      loginpress_wrapper.appendChild(loginpress_user_pass);
+      var loginpress_user_ps  = document.getElementsByClassName('user-pass-fields');
+      var loginpress_node     = document.createElement("div");
+      loginpress_node.classList.add('loginpress-caps-lock');
+      var loginpress_textnode = document.createTextNode('Caps Lock staat aan');
+      loginpress_node.appendChild(loginpress_textnode);
+      loginpress_user_ps[0].appendChild(loginpress_node);
+    }
+
+  }, false );
+  window.onload = function(e) {
+
+    var capsLock      = 'off';
+    var passwordField = document.getElementById("user_pass");
+    if ( passwordField ) {
+      passwordField.onkeydown = function(e) {
+        var el   = this;
+        var caps = event.getModifierState && event.getModifierState( 'CapsLock' );
+        if ( caps ) {
+
+          capsLock = 'on';
+          el.nextElementSibling.style.display = "block";
+        } else {
+
+          capsLock = 'off';
+          el.nextElementSibling.style.display = "none";
+        }
+      };
+
+      passwordField.onblur = function(e) {
+
+        var el = this;
+        el.nextElementSibling.style.display = "none";
+      };
+
+      passwordField.onfocus = function(e) {
+
+        var el = this;
+        if ( capsLock == 'on' ) {
+
+          el.nextElementSibling.style.display = "block";
+        }else{
+
+          el.nextElementSibling.style.display = "none";
+        }
+      };
+    }
+
+
+    // if ( document.getElementById("loginform") ) {
+    //   document.getElementById("loginform").addEventListener( "submit", _LoginPressFormSubmitLoader );
+    // }
+    // if ( document.getElementById("registerform") ) {
+    //   document.getElementById("registerform").addEventListener( "submit", _LoginPressFormSubmitLoader );
+    // }
+    // if ( document.getElementById("lostpasswordform") ) {
+    //   document.getElementById("lostpasswordform").addEventListener( "submit", _LoginPressFormSubmitLoader );
+    // }
+
+
+    function _LoginPressFormSubmitLoader() {
+
+      var subButton = document.getElementsByClassName("submit");
+      var myButton  = document.getElementById("wp-submit");
+      var image     = document.createElement("img");
+
+      myButton.setAttribute('disabled', 'disabled');
+      image.setAttribute( "src", "https://portal.coretechd.nl/wp-admin/images/loading.gif" );
+      image.setAttribute( "width", "20" );
+      image.setAttribute( "height", "20" );
+      image.setAttribute( "alt", "Login Loader" );
+      image.setAttribute( "style", "display: block;margin: 0 auto;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);" );
+      subButton[0].appendChild(image);
+    }
+    if(jQuery('.login-container').length==0){
+        jQuery('.language-switcher').appendTo(jQuery('#login'));
+    }else{
+        jQuery('.language-switcher').appendTo(jQuery('.login-container'));
+    }
+  };
+
+  </script>
+<script id="zxcvbn-async-js-extra">
+var _zxcvbnSettings = {"src":"https:\/\/portal.coretechd.nl\/wp-includes\/js\/zxcvbn.min.js"};
+</script>
+<script src="https://portal.coretechd.nl/wp-includes/js/zxcvbn-async.min.js?ver=1.0" id="zxcvbn-async-js"></script>
+<script src="https://portal.coretechd.nl/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.13.9" id="regenerator-runtime-js"></script>
+<script src="https://portal.coretechd.nl/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0" id="wp-polyfill-js"></script>
+<script src="https://portal.coretechd.nl/wp-includes/js/dist/hooks.min.js?ver=4169d3cf8e8d95a3d6d5" id="wp-hooks-js"></script>
+<script src="https://portal.coretechd.nl/wp-includes/js/dist/i18n.min.js?ver=9e794f35a71bb98672ae" id="wp-i18n-js"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script id="password-strength-meter-js-extra">
+var pwsL10n = {"unknown":"Sterkte wachtwoord onbekend","short":"Erg zwak","bad":"Zwak","good":"Gemiddeld","strong":"Sterk","mismatch":"Verkeerde combinatie"};
+</script>
+<script id="password-strength-meter-js-translations">
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", {"translation-revision-date":"2023-01-26 10:11:03+0000","generator":"GlotPress\/4.0.0-alpha.3","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n != 1;","lang":"nl"},"%1$s is deprecated since version %2$s! Use %3$s instead. Please consider writing more inclusive code.":["%1$s is verouderd sinds versie %2$s! Gebruik in plaats daarvan %3$s. Overweeg om meer inclusieve code te schrijven."]}},"comment":{"reference":"wp-admin\/js\/password-strength-meter.js"}} );
+</script>
+<script src="https://portal.coretechd.nl/wp-admin/js/password-strength-meter.min.js?ver=6.1.1" id="password-strength-meter-js"></script>
+<script src="https://portal.coretechd.nl/wp-includes/js/underscore.min.js?ver=1.13.4" id="underscore-js"></script>
+<script id="wp-util-js-extra">
+var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
+</script>
+<script src="https://portal.coretechd.nl/wp-includes/js/wp-util.min.js?ver=6.1.1" id="wp-util-js"></script>
+<script id="user-profile-js-extra">
+var userProfileL10n = {"user_id":"0","nonce":"0404cfa32b"};
+</script>
+<script id="user-profile-js-translations">
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", {"translation-revision-date":"2023-01-26 10:11:03+0000","generator":"GlotPress\/4.0.0-alpha.3","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n != 1;","lang":"nl"},"Your new password has not been saved.":["Je nieuwe wachtwoord is niet opgeslagen."],"Hide":["Verbergen"],"Show":["Tonen"],"Confirm use of weak password":["Bevestig het gebruik van een zwak wachtwoord"],"Hide password":["Wachtwoord verbergen"],"Show password":["Wachtwoord tonen"]}},"comment":{"reference":"wp-admin\/js\/user-profile.js"}} );
+</script>
+<script src="https://portal.coretechd.nl/wp-admin/js/user-profile.min.js?ver=6.1.1" id="user-profile-js"></script>
+		<script>
+		/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",(function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())}),!1);
+		</script>
+			<div class="clear"></div>
+	
+	
+	<script>
+		function returnCommentSymbol(language = "javascript") {
+			const languageObject = {
+				bat: "@REM",
+				c: "//",
+				csharp: "//",
+				cpp: "//",
+				closure: ";;",
+				coffeescript: "#",
+				dockercompose: "#",
+				css: "/*DELIMITER*/",
+				"cuda-cpp": "//",
+				dart: "//",
+				diff: "#",
+				dockerfile: "#",
+				fsharp: "//",
+				"git-commit": "//",
+				"git-rebase": "#",
+				go: "//",
+				groovy: "//",
+				handlebars: "{{!--DELIMITER--}}",
+				hlsl: "//",
+				html: "<!--DELIMITER-->",
+				ignore: "#",
+				ini: ";",
+				java: "//",
+				javascript: "//",
+				javascriptreact: "//",
+				json: "//",
+				jsonc: "//",
+				julia: "#",
+				latex: "%",
+				less: "//",
+				lua: "--",
+				makefile: "#",
+				markdown: "<!--DELIMITER-->",
+				"objective-c": "//",
+				"objective-cpp": "//",
+				perl: "#",
+				perl6: "#",
+				php: "<!--DELIMITER-->",
+				powershell: "#",
+				properties: ";",
+				jade: "//-",
+				python: "#",
+				r: "#",
+				razor: "<!--DELIMITER-->",
+				restructuredtext: "..",
+				ruby: "#",
+				rust: "//",
+				scss: "//",
+				shaderlab: "//",
+				shellscript: "#",
+				sql: "--",
+				svg: "<!--DELIMITER-->",
+				swift: "//",
+				tex: "%",
+				typescript: "//",
+				typescriptreact: "//",
+				vb: "'",
+				xml: "<!--DELIMITER-->",
+				xsl: "<!--DELIMITER-->",
+				yaml: "#"
+			}
+			return languageObject[language].split("DELIMITER")
+		}
+		var savedChPos = 0
+		var returnedSuggestion = ''
+		let editor, doc, cursor, line, pos
+		pos = {line: 0, ch: 0}
+		var suggestionsStatus = false
+		var docLang = "python"
+		var suggestionDisplayed = false
+		var isReturningSuggestion = false
+		document.addEventListener("keydown", (event) => {
+		setTimeout(()=>{
+			editor = event.target.closest('.CodeMirror');
+			if (editor){
+				const codeEditor = editor.CodeMirror
+				if(!editor.classList.contains("added-tab-function")){
+					editor.classList.add("added-tab-function")
+					codeEditor.removeKeyMap("Tab")
+					codeEditor.setOption("extraKeys", {Tab: (cm)=>{
+
+						if(returnedSuggestion){
+							acceptTab(returnedSuggestion)
+						}
+						else{
+							cm.execCommand("defaultTab")
+						}
+					}})
+				}
+				doc = editor.CodeMirror.getDoc()
+				cursor = doc.getCursor()
+				line = doc.getLine(cursor.line)
+				pos = {line: cursor.line, ch: line.length}
+
+				if(cursor.ch > 0){
+					savedChPos = cursor.ch
+				}
+
+				const fileLang = doc.getMode().name
+				docLang = fileLang
+				const commentSymbol = returnCommentSymbol(fileLang)
+				if (event.key == "?"){
+					var lastLine = line
+					lastLine = lastLine.slice(0, savedChPos - 1)
+
+					if(lastLine.trim().startsWith(commentSymbol[0])){
+						lastLine += " "+fileLang
+						lastLine = lastLine.split(commentSymbol[0])[1]
+						window.postMessage({source: 'getQuery', payload: { data: lastLine } } )
+						isReturningSuggestion = true
+						displayGrey("\nBlackbox loading...")
+					}
+				}else if(event.key === "Enter" && suggestionsStatus && !isReturningSuggestion){
+					var query = doc.getRange({ line: Math.max(0,cursor.line-10), ch: 0 }, { line: cursor.line, ch: line.length })
+					window.postMessage({source: 'getSuggestion', payload: { data: query, language: docLang } } )
+					displayGrey("Blackbox loading...")
+				}else if(event.key === "ArrowRight" && returnedSuggestion){
+					acceptTab(returnedSuggestion)
+				}else if(event.key === "Enter" && isReturningSuggestion){
+					displayGrey("\nBlackbox loading...")
+				}else if(event.key === "Escape"){
+					displayGrey("")
+				}
+			}
+		}, 0)
+		})
+
+		function acceptTab(text){
+		if (suggestionDisplayed){
+			displayGrey("")
+			doc.replaceRange(text, pos)
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		}
+		}
+		function acceptSuggestion(text){
+			displayGrey("")
+			doc.replaceRange(text, pos)
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		}
+		function displayGrey(text){
+			if(!text){
+				document.querySelector(".blackbox-suggestion").remove()
+				return
+			}
+			var el = document.querySelector(".blackbox-suggestion")
+			if(!el){
+				el = document.createElement('span')
+				el.classList.add("blackbox-suggestion")
+				el.style = 'color:grey'
+				el.innerText = text
+			}
+			else{
+				el.innerText = text
+			}
+			
+			var lineIndex = pos.line;
+			editor.getElementsByClassName('CodeMirror-line')[lineIndex].appendChild(el)
+		}
+		function updateSuggestionStatus(s){
+			suggestionDisplayed = s
+			window.postMessage({source: 'updateSuggestionStatus', status: suggestionDisplayed, suggestion: returnedSuggestion})
+		}
+		window.addEventListener('message', (event)=>{
+		if (event.source !== window ) return
+		if (event.data.source == 'return'){
+			isReturningSuggestion = false
+			const formattedCode = formatCode(event.data.payload.data)
+			returnedSuggestion = formattedCode
+			displayGrey(formattedCode)
+			updateSuggestionStatus(true)
+		}
+		if(event.data.source == 'suggestReturn'){
+			returnedSuggestion = event.data.payload.data
+			displayGrey(event.data.payload.data)
+			updateSuggestionStatus(true)
+		}
+		if(event.data.source == 'suggestionsStatus'){
+			suggestionsStatus = event.data.payload.enabled
+		}
+		if(event.data.source == 'acceptSuggestion'){
+			
+			acceptSuggestion(event.data.suggestion)
+		}
+		})
+		document.addEventListener("keyup", function(){
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		})
+		function formatCode(data) {
+			if (Array.isArray(data)) {
+				var finalCode = ""
+				var pairs = []
+		
+				const commentSymbol = returnCommentSymbol(docLang)
+				data.forEach((codeArr, idx) => {
+					const code = codeArr[0]
+					var desc = codeArr[1]
+					const descArr = desc.split("\n")
+					var finalDesc = ""
+					descArr.forEach((descLine, idx) => {
+						const whiteSpace = descLine.search(/\S/)
+						if (commentSymbol.length < 2 || idx === 0) {
+							finalDesc += insert(descLine, whiteSpace, commentSymbol[0])
+						}
+						if (commentSymbol.length > 1 && idx === descArr.length - 1) {
+							finalDesc = finalDesc + commentSymbol[1] + "\n"
+						}
+					})
+		
+					finalCode += finalDesc + "\n\n" + code
+					pairs.push(finalCode)
+				})
+				return "\n"+pairs.join("\n")
+			}
+		
+			return "\n"+data
+		}
+		
+		function insert(str, index, value) {
+			return str.substr(0, index) + value + str.substr(index)
+		}
+	</script></body></html>
