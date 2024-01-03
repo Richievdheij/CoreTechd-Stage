@@ -1,10 +1,10 @@
 ## Stage-opdracht
-CoreTechd Dashboard portal bevat codes in (HTML, CSS, PHP & JavaScript)
+-CoreTechd Dashboard portal bevat codes in (HTML & CSS, PHP & JavaScript)
 # CORETECHD DASHBOARD PORTAL
-// Gegevens komen vanuit het CoreTechd dashboard portal "https://portal.coretechd.nl/login/" met een login functie voor eigen gebruikers.
+- Gegevens komen vanuit het CoreTechd dashboard portal "https://portal.coretechd.nl/login/" met een login functie voor eigen gebruikers.
 
-# De portal is alleen toegankelijk voor klanten en/of partners van CoreTechd.
-# Portal geeft duidelijke informatie over:
+* De portal is alleen toegankelijk voor klanten en/of partners van CoreTechd.
+* Portal geeft duidelijke informatie over:
 // Over CoreTechd / Socials: Wie, en wat is CoreTechd? "https://zakelijk.coretechd.nl/"
 
 // Formulieren: Een link richting een dashboard systeem die gebonden is aan het account. "https://portal.coretechd.nl/formulieren/"
