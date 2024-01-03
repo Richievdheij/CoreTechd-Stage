@@ -1,5 +1,5 @@
 ## Stage-opdracht
--CoreTechd Dashboard portal bevat codes in (HTML & CSS, PHP & JavaScript)
+-CoreTechd Dashboard portal bevat codes in HTML & CSS. (Bevat ook extern JavaScript & PHP via WordPress)
 # CORETECHD DASHBOARD PORTAL
 - Gegevens komen vanuit het CoreTechd dashboard portal "https://portal.coretechd.nl/login/" met een login functie voor eigen gebruikers.
 
